@@ -1,0 +1,6 @@
+module Pods_ReactNativeChatFirebase {
+  umbrella header "Pods-ReactNativeChatFirebase-umbrella.h"
+
+  export *
+  module * { export * }
+}

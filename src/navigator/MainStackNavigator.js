@@ -10,31 +10,39 @@ import ChatScreen from "../screens/ChatScreen";
 
 const Stack = createStackNavigator()
 
-const ChatFlow = () => {
+function ChatFlow() {
     return (
         <NavigationContainer>
             <Stack.Navigator name = 'Chat'>
                 <Stack.Screen
                     name='Sign in screen'
                     component = {SignInScreen}
-                    options = {{ headerShow = false }}
+                    options = {{headerShow: false}}
                 />
                 <Stack.Screen
                     name='Groups Screen'
                     component = {GroupsScreen}
-                    options = {{ title = 'Groups' }}
+                    options = {{title: 'Groups'}}
                 />
                 <Stack.Screen
                     name='Add group Screen'
                     component = {AddGroupScreen}
-                    options = {{ title = 'add group screen' }}
+                    options = {{title: 'add group screen'}}
                 />
                 <Stack.Screen
                     name='Chat Screen'
                     component = {ChatScreen}
-                    options = {{ title = 'Chat screen' }}
+                    options = {{title: 'Chat screen'}}
                 />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
+
+function MainStackNavigator() {
+    return (
+        ChatFlow()
+    )
+}
+
+export default MainStackNavigator

@@ -1,4 +1,4 @@
-const Сolor = {
+const colors = {
     black: '#000009',
     theme: '#232323',
     charcoal: '#474747',
@@ -8,4 +8,4 @@ const Сolor = {
     white: '#FFFFFF',
     logocolor: '#219653'
 }
- export default Color
+ export default colors

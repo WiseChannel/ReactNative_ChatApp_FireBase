@@ -181,11 +181,11 @@ register_parameters( rt::parameters_store& store )
     ///////////////////////////////////////////////
 
     rt::option color_output( COLOR_OUTPUT, (
-        rt::description = "Enables color output of the framework log and report messages.",
+        rt::description = "Enables colors output of the framework log and report messages.",
         rt::env_var = "BOOST_TEST_COLOR_OUTPUT",
-        rt::help = "The framework is able to produce color output on systems which supports it. "
+        rt::help = "The framework is able to produce colors output on systems which supports it. "
                    "To enable this behavior set this option to yes. By default the framework "
-                   "does not produces color output."
+                   "does not produces colors output."
     ));
 
     color_output.add_cla_id( "--", COLOR_OUTPUT, "=", true );

@@ -57,7 +57,7 @@ FB_LINKABLE(UIColor_SonarValueCoder)
 
   NSUInteger intColor = (alpha << 24) | (red << 16) | (green << 8) | blue;
   return
-      @{@"__type__" : @"color", @"__mutable__" : @NO, @"value" : @(intColor)};
+      @{@"__type__" : @"colors", @"__mutable__" : @NO, @"value" : @(intColor)};
 }
 
 @end

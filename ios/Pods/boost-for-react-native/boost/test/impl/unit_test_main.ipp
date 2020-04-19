@@ -102,7 +102,7 @@ private:
 
         m_os << ",fontname=Helvetica";
 
-        m_os << (tu.p_default_status == test_unit::RS_ENABLED ? ",color=green" : ",color=yellow");
+        m_os << (tu.p_default_status == test_unit::RS_ENABLED ? ",colors=green" : ",colors=yellow");
 
         if( master_ts )
             m_os << ",label=\"" << tu.p_name << "\"];\n";
@@ -127,12 +127,12 @@ private:
         BOOST_TEST_FOREACH( test_unit_id, dep_id, tu.p_dependencies.get() ) {
             test_unit const& dep = framework::get( dep_id, TUT_ANY );
 
-            m_os << "tu" << tu.p_id << " -> " << "tu" << dep.p_id << "[color=red,style=dotted,constraint=false];\n";
+            m_os << "tu" << tu.p_id << " -> " << "tu" << dep.p_id << "[colors=red,style=dotted,constraint=false];\n";
         }
 
     }
     virtual void    visit( test_case const& tc )
-    { 
+    {
         report_test_unit( tc );
     }
     virtual bool    test_suite_start( test_suite const& ts )
@@ -164,7 +164,7 @@ struct labels_collector : test_tree_visitor {
     std::set<std::string> const& labels() const { return m_labels; }
 
 private:
-    virtual bool            visit( test_unit const& tu ) 
+    virtual bool            visit( test_unit const& tu )
     {
         m_labels.insert( tu.p_labels->begin(), tu.p_labels->end() );
         return true;
@@ -221,7 +221,7 @@ unit_test_main( init_unit_test_func init_func, int argc, char* argv[] )
             traverse_test_tree( framework::master_test_suite().p_id, collector, true );
 
             results_reporter::get_stream() << "Available labels:\n  ";
-            std::copy( collector.labels().begin(), collector.labels().end(), 
+            std::copy( collector.labels().begin(), collector.labels().end(),
                        std::ostream_iterator<std::string>( results_reporter::get_stream(), "\n  " ) );
             results_reporter::get_stream() << "\n";
 

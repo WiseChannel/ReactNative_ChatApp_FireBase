@@ -1,4 +1,4 @@
-import color = {
+const Сolor = {
     black: '#000009',
     theme: '#232323',
     charcoal: '#474747',
@@ -8,3 +8,4 @@ import color = {
     white: '#FFFFFF',
     logocolor: '#219653'
 }
+ export default Color

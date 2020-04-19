@@ -40,6 +40,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+.idea
 
 # TypeScript v1 declaration files
 typings/
@@ -102,3 +103,11 @@ dist
 
 # TernJS port file
 .tern-port
+android/.gradle/6.0.1/vcsMetadata-1/
+ios/Pods/Flipper-Folly/folly/chrono/
+ios/Pods/Flipper-Folly/folly/experimental/test/
+ios/Pods/Flipper-Folly/folly/poly/
+ios/Pods/Flipper-RSocket/yarpl/test/
+ios/Pods/Folly/folly/chrono/
+ios/Pods/Folly/folly/poly/
+ios/Pods/YogaKit/yoga/

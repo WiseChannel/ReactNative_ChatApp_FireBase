@@ -2,12 +2,14 @@ import React from 'react'
 import { StyleSheet, View, Text } from "react-native";
 import Button from "../components/Button";
 import String from "../const/String";
+import EmailTextField from "../components/EmailTextField";
 
 const SignInScreen = () => {
     return (
         <View style = {styles.container}>
             <Text style = {styles.text}>Sign in screen</Text>
             <Button title = {String.Join} />
+            <EmailTextField />
         </View>
     )
 }

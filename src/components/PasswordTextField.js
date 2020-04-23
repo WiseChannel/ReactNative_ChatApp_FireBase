@@ -14,7 +14,6 @@ const PasswordTextField = ({ term, placeHolder, OnTermChange, onValidatePassword
             <Text style={style.TextField}>
                 <TextInput
                     autoCorrect={false}
-                    secureTextEntry={}
                     style={style.TextField}
                     placeholder={placeHolder}
                     value={term}

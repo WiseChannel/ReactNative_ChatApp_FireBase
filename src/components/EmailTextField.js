@@ -5,7 +5,7 @@ import {
 import Colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import Constants from "../const/Constants";
 
-const EmailTextField = ({ term, placeHolder, InTermChange, inValidateEmailAdress, error }) => {
+const EmailTextField = ({ term, placeHolder, onTermChange, onValidateEmailAddress, error }) => {
     return (
         <View>
             <Text style={styles.error}>{ error }</Text>
@@ -15,8 +15,8 @@ const EmailTextField = ({ term, placeHolder, InTermChange, inValidateEmailAdress
                     style={styles.TextField}
                     placeholder={placeHolder}
                     value={term}
-                    onChangeText={OnTermChange}
-                    onEndEditing={onValidateEmailAdress}
+                    onChangeText={onTermChange}
+                    onEndEditing={onValidateEmailAddress}
                 />
             </View>
         </View>

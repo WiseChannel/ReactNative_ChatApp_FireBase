@@ -45,7 +45,7 @@ function SignInScreen() {
                             term={email}
                             error={emailError}
                             placeHolder={String.EmailPlaceHolder}
-                            OnTermChange={newEmail => setEmail(newEmail)}
+                            OnTermChange={newEmail => {setEmail(newEmail)}}
                             onValidateEmailAddress={validateEmailAddress}
                         />
                         <PasswordTextField

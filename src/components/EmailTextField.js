@@ -8,7 +8,7 @@ import Constants from "../const/Constants";
 const EmailTextField = ({ term, placeHolder, onTermChange, onValidateEmailAddress, error }) => {
     return (
         <View>
-            <Text style={styles.error}>{ error }</Text>
+            <Text style={styles.ErrorText}>{ error }</Text>
             <View style={styles.TextFieldView}>
                 <TextInput
                     autoCorrect={false}
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     ErrorText: {
         fontSize: 12,
-        color: 'red',
+        color: Colors.red,
         marginBottom: -5,
         marginHorizontal: 20,
     }

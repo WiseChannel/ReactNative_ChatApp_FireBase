@@ -45,3 +45,5 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     }
 })
+
+export default CustomTextField

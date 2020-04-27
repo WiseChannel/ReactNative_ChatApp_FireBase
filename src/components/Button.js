@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, StyleSheet, Text } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, ActivityIndicator, View } from "react-native";
 import Color from "../utils/Colors";
 
 const Button = props => {
@@ -7,19 +7,32 @@ const Button = props => {
         title = 'Enter',
         style = {},
         textStyle = {},
-        onPress
+        onPress,
+        isLoading
     } = props
 
-    return (
-        <TouchableOpacity
-            onPress = {onPress}
-            style = {[styles.button, style]}
-        >
-            <Text style={[styles.text, textStyle]}>
-                { title }
-            </Text>
-        </TouchableOpacity>
-    )
+    const loader = () => {
+        return <ActivityIndicator animationg = {isLoading} />
+    }
+
+    const button = () => {
+        return(
+            <TouchableOpacity
+                onPress={onPress}
+                style={[styles.button, style]}
+            >
+                <Text style={[styles.text, textStyle]}>
+                    {title}
+                </Text>
+            </TouchableOpacity>
+        )
+    }
+
+   return(
+       <View style={[styles.button, styles]}>
+           {isLoading ? loader() : button()}
+       </View>
+   )
 }
 
 const styles = StyleSheet.create({

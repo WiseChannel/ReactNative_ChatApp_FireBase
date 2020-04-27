@@ -63,13 +63,13 @@ function SignInScreen() {
                         setIsLoading(false)
 
                         console.log(error);
-                        Alert.alert(error)
+                        Alert.alert(error.message)
                     })
             })
         } catch(e) {
             setIsLoading(false)
 
-            Alert.alert(error)
+            Alert.alert(error.message)
         }
     }
 
@@ -96,7 +96,11 @@ function SignInScreen() {
                             OnTermChange={newPassword => {setPassword(newPassword)}}
                             onValidatePasswordField={validatePasswordField}
                         />
-                        <Button title={String.Join}/>
+                        <Button
+                            title={String.Join}
+                            onPress={performAuth}
+                            isLoading={isLoading}
+                        />
                     </SafeAreaView>
                 </View>
             </KeyboardAvoidingView>

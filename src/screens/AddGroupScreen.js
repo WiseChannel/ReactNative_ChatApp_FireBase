@@ -22,7 +22,7 @@ const AddGroupScreen = ({ navigation, performCreateGroup }) => {
 
     function createGroupFireBase() {
         setIsLoading(true)
-        const groupRef = fireStore().collection('groups')
+        const groupRef = fireStore().collection('groups').doc()
         const userID = firebase.auth().currentUser.uid
 
         groupRef.set({
@@ -32,7 +32,7 @@ const AddGroupScreen = ({ navigation, performCreateGroup }) => {
         }).then(function (docRef) {
             setIsLoading(false)
             console.log('Document written with ID: ', groupRef.id)
-            addMembersOfChatToFirebae(groupRef.id, userID)
+            addMembersOfChatToFirebase(groupRef.id, userID)
         }).catch(function (error) {
             Alert.alert(error.message)
             setIsLoading(false)
@@ -40,7 +40,7 @@ const AddGroupScreen = ({ navigation, performCreateGroup }) => {
         })
     }
 
-    function addMembersOfChatToFirebae (groupId,userId) {
+    function addMembersOfChatToFirebase (groupId,userId) {
         const memebersRef = fireStore()
             .collection('memeber')
             .doc(groupId)
@@ -48,6 +48,8 @@ const AddGroupScreen = ({ navigation, performCreateGroup }) => {
             .doc()
         memebersRef.set({
             userID: userID,
+        }).then(function (docRef) {
+            navigation.goBack()
         }).catch(function (error) {
             setIsLoading(false)
             console.log(error)

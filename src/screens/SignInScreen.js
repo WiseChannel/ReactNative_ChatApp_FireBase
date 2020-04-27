@@ -11,7 +11,7 @@ import Utility from "../utils/Utility";
 import PasswordTextField from "../components/PasswordTextField";
 import firebase from "firebase";
 
-function SignInScreen() {
+function SignInScreen({ navigation }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -51,12 +51,19 @@ function SignInScreen() {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then(user => {
                     setIsLoading(false)
+                    navigation.reset({
+                        index: 0,
+                        routes:[{name: 'Groups Screen'}]
+                    })
                     Alert.alert('Logged In ')
                 }).catch((e) => {
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then(user => {
                         setIsLoading(false)
-
+                        navigation.reset({
+                            index: 0,
+                            routes:[{name: 'Groups Screen'}]
+                        })
                         Alert.alert('Create a new user')
                     })
                     .catch((error) => {

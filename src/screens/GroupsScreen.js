@@ -1,7 +1,28 @@
 import React from 'react'
 import { StyleSheet, View, Text } from "react-native";
+import ButtonWithBackground from "../components/ButtonWithBackground";
+import Images from '../const/Images'
 
-const GroupsScreen = () => {
+function GroupsScreen({navigation})  {
+
+    useLayoutEffect(() => {
+        navigation.setOption({
+            headerRight: () => {
+                <ButtonWithBackground
+                    onPress={() => {}}
+                    image={Images.add}
+                />
+            },
+            headerLeft: () => {
+                <ButtonWithBackground
+                    onPress={() => {}}
+                    image={Images.logout}
+                />
+            }
+        })
+    });
+
+
     return (
         <View style = {styles.container}>
             <Text style = {styles.text}>GroupsScreen screen</Text>

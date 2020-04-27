@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useLayoutEffect, useState, useEffect} from 'react'
 import { StyleSheet, View, Text } from "react-native";
 
-const AddGroupScreen = () => {
+const AddGroupScreen = ({ navigation }) => {
+
+    useLayoutEffect(() => {
+        navigation.setOption({
+            headerRight: () => {
+
+            },
+            headerLeft: () => {
+
+            }
+        })
+    })
+
     return (
         <View style = {styles.container}>
             <Text style = {styles.text}>AddGroupScreen screen</Text>

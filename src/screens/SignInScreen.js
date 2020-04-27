@@ -9,6 +9,7 @@ import Constants from "../const/Constants";
 import DismissKeyboard from "../components/DismissKeyboard";
 import Utility from "../utils/Utility";
 import PasswordTextField from "../components/PasswordTextField";
+import firebase from "firebase";
 
 function SignInScreen() {
 
@@ -18,18 +19,58 @@ function SignInScreen() {
     const [passwordError, setPasswordError] = useState('')
     const [isLoading, setIsLoading] = useState('')
 
-     const validateEmailAddress = () => {
+    validateEmailAddress = () => {
         const isValidEmail = Utility.isEmailValid(email)
         isValidEmail ? setEmailError('') : setEmailError(String.InvalidEmailAddress)
 
         return isValidEmail
     }
 
-     const validatePasswordField = () => {
+    validatePasswordField = () => {
         const isValidField = Utility.isValidField(password)
         isValidField ? setPasswordError('') : setPasswordError(String.PasswordFieldEmpty)
 
         return isValidField
+    }
+
+    performanceAuth = () => {
+        const isValidEmail = validateEmailAddress()
+        const isValidPassword = validatePasswordField()
+
+        if(isValidEmail && isValidPassword) {
+            setEmailError('')
+            setPasswordError('')
+            registration(email, password)
+        }
+    }
+
+    registration = (email, password) => {
+        try {
+            setIsLoading(true)
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(user => {
+                    setIsLoading(false)
+                    Alert.alert('Logged In ')
+                }).catch((e) => {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(user => {
+                        setIsLoading(false)
+
+                        Alert.alert('Create a new user')
+                    })
+                    .catch((error) => {
+                        setIsLoading(false)
+
+                        console.log(error);
+                        Alert.alert(error)
+                    })
+            })
+        } catch(e) {
+            setIsLoading(false)
+
+            Alert.alert(error)
+        }
     }
 
     return (

@@ -9,7 +9,9 @@ function GroupsScreen({navigation})  {
         navigation.setOption({
             headerRight: () => {
                 <ButtonWithBackground
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate('Add Group Screen')
+                    }}
                     image={Images.add}
                 />
             },

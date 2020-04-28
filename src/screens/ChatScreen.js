@@ -44,25 +44,82 @@ const ChatScreen = ({ route, navigation }) => {
             })
     }
 
+    function sendMessagesToChat() {
+        const MessageRef = firestore()
+            .collection('message')
+            .doc(item.groupID)
+            .collection('messages')
+            .doc()
+        const userEmail = firebase.auth().currentUser.email
+
+        messageRef.set({
+            messageID: message.id,
+            message: message,
+            senderId: userID,
+            senderEmail: userEmail
+        }).then(docRef => {
+            console.log('Document written with ID ', messageRef.id)
+            setMessage('')
+        }).catch((e) => {
+            Alert.alert(e.message)
+            console.log('Error', e)
+        })
+    }
+
     return (
-        <View style = {styles.container}>
-            <Text style = {styles.text}>ChatScreen screen</Text>
-        </View>
+        <DismissKeyboard>
+            <KeyboardAvoidingView
+                style={{flex: 1, flexDirection: 'column', justifyContent: 'center'}}
+                behavior='padding'
+                enabled
+                keyboardVerticalOffset={100}
+                >
+                <View style={styles.container}>
+                    <FlatList
+                        style={styles.flatList}
+                        data={messageList}
+                        keyExtractor={(item, index) => 'key' + index}
+                        rederItem={({item}) => {
+                            return(
+                                <TouchableOpacity onPress={() => {
+
+                                }}>
+                                    <MessageItem item={item} />
+                                </TouchableOpacity>
+                            )
+                        }}
+                    >
+                    </FlatList>
+                    <View style={styles.messageFieldView}>
+                        <MessageFieldView
+                            //term={message}
+                            placeholder={String.typeYourMessage}
+                            onTermChange={message => setMessage(message)}
+                            //onSubmit={sendMessagesToChat}
+                            onSubmit={sendMessagesToChat()}
+                        >
+
+                        </MessageFieldView>
+                    </View>
+                </View>
+            </KeyboardAvoidingView>
+        </DismissKeyboard>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ebebeb'
+        flex: 1
     },
-    text: {
-        color: '#101010',
-        fontSize: 24,
-        fontWeight: 'bold',
-
+    flatList: {
+        marginBottom: 10,
+        flex: 0.9
+    },
+    messageFieldView: {
+        flex: 0.1
     }
 
 })

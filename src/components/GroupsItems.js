@@ -9,7 +9,8 @@ function GroupItem() {
         <View>
             <View styles={styles.container}>
                 <Image
-                    source={Images.groups }
+                    source={Images.groups}
+                    style={styles.Image()}
                 />
                 <View style={{justifyContent: 'center'}}>
                     <Text style={styles.groupTitle}>
@@ -59,3 +60,5 @@ const styles = StyleSheet.create({
         fontSize: 14
     }
 })
+
+export default GroupItem

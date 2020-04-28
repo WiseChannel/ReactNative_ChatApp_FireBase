@@ -7,6 +7,7 @@ const String = {
     EnterYourGroupName: 'Enter tour group name',
     GroupNameEmpty: 'Group name empty',
     CreateGroup: 'Create group',
+    Send: 'Send',
 }
 
 export default String

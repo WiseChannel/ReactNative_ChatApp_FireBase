@@ -7,6 +7,7 @@ import SignInScreen from "../screens/SignInScreen";
 import GroupsScreen from "../screens/GroupsScreen";
 import AddGroupScreen from "../screens/AddGroupScreen";
 import ChatScreen from "../screens/ChatScreen";
+import SplashScreen from "../screens/SpleshScreen";
 
 const Stack = createStackNavigator()
 
@@ -14,6 +15,7 @@ function ChatFlow() {
     return (
         <NavigationContainer>
             <Stack.Navigator name = 'Chat'>
+                <Stack.Navigator />
                 <Stack.Screen
                     name='Sign in screen'
                     component = {SignInScreen}

@@ -35,6 +35,9 @@ function MessageItem({ item }) {
             )
         }
     }
+    return (
+        messageView()
+    )
 }
 
 const styles = StyleSheet.create({

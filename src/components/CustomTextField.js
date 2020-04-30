@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
     TextFieldView: {
         height: Constants.screenHeight * 0.06,
-        weight: Constants.screenWidth * 0.85,
+        width: Constants.screenWidth * 0.85,
         marginTop: 5,
         marginBottom: 10,
         borderColor: Color.black,

@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginRight: 10,
         marginLeft: 10,
-        weight: '75%',
+        width: '75%',
         borderColor: Colors.gray,
         borderWidth: 1,
         justifyContent: 'center',

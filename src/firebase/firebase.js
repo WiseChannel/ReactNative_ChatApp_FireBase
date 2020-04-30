@@ -2,19 +2,19 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 require('firebase/auth')
 import {
-    API_KEY, 
+    API_KEY,
     AUTH_DOMAIN,
-    DATABSE_URL,
+    DATABASE_URL,
     PROJECT_ID,
     STORAGE_BUCKET,
     MESSAGING_SENDER_ID,
     APP_ID
 } from 'react-native-dotenv'
 
-var firebaseConfig = {
+let firebaseConfig = {
     apiKey: API_KEY,
     authDomain: AUTH_DOMAIN,
-    databaseURL: DATABSE_URL,
+    databaseURL: DATABASE_URL,
     projectId: PROJECT_ID,
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGING_SENDER_ID,
@@ -22,7 +22,7 @@ var firebaseConfig = {
     measurementId: MESSAGING_SENDER_ID
   };
 
-  firebase.initializeApp(firebaseConfig)
-  
-  export const firestore = firebase.firestore()
-  export default firebase
+firebase.initializeApp(firebaseConfig)
+
+export const firestore = firebase.firestore()
+export default firebase

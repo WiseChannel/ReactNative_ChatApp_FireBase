@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, TouchableOpacity, FlatList, KeyboardAvoidingView, Alert } from "react-native";
-import firebase, {firestore} from "firebase";
+import firebase, {firestore} from "../firebase/Firebase";
 import MessageFieldView from "../components/MessageFieldView";
 import String from "../const/String";
 import DismissKeyboard from "../components/DismissKeyboard";

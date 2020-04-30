@@ -3,8 +3,6 @@ import { decode, encode } from 'base-64' global.crypto = require("firebase/fir
 if (!global.btoa) { global.btoa = encode; }
 if (!global.atob) { global.atob = decode; }
 
-
-
 import React from 'react'
 
 import MainStackNavigator from "./src/navigator/MainStackNavigator";

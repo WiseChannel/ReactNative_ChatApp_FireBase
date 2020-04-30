@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         margin: 5,
         height: 25,
         width: 25,
-        resizeMode: 'strech'
+        resizeMode: 'stretch'
     }
 })
 

@@ -9,7 +9,7 @@ function MessageItem({ item }) {
     const userID = firebase.auth().currentUser.uid
 
     function messageView() {
-        if (userID === item.senderId()) {
+        if (userID === item.senderId) {
             return (
                 <View style={styles.otherMessageContainerView}>
                     <Text
@@ -26,9 +26,9 @@ function MessageItem({ item }) {
             return(
                 <View style={styles.myMessageContainerView}>
                     <Text style={styles.senderName}>
-                        {item.senderName}
+                        {item.senderEmail}
                     </Text>
-                    <Text style={styles.message()}>
+                    <Text style={styles.message}>
                         {item.message}
                     </Text>
                 </View>

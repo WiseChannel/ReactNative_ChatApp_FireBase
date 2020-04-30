@@ -2,9 +2,7 @@ import React from 'react'
 import { TextInput, Text, View, StyleSheet } from 'react-native'
 
 //import components
-import Utility from "../utils/Utility";
 import Colors from "../utils/Colors";
-import String from "../const/String";
 import Constants from "../const/Constants";
 
 const PasswordTextField = ({ term, placeHolder, OnTermChange, onValidatePasswordField, error }) => {

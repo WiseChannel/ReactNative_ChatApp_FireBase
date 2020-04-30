@@ -29,7 +29,7 @@ const Button = props => {
     }
 
    return(
-       <View style={[styles.button, styles]}>
+       <View style={[styles.button, style]}>
            {isLoading ? loader() : button()}
        </View>
    )

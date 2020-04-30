@@ -1,23 +1,23 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { StyleSheet, Text, View, Image} from 'react-native'
 import Constants from "../const/Constants";
 import Images from '../const/Images'
 import Colors from "../utils/Colors";
 
-function GroupItem() {
+function GroupItem({ item }) {
     return (
         <View>
             <View styles={styles.container}>
                 <Image
                     source={Images.groups}
-                    style={styles.Image()}
+                    style={styles.Image}
                 />
                 <View style={{justifyContent: 'center'}}>
                     <Text style={styles.groupTitle}>
                         {item.groupName}
                     </Text>
                     <Text styles={styles.groupMemebers}>
-                        {item.groupMembers}
+                        {item.groupMemebers}
                     </Text>
                 </View>
             </View>

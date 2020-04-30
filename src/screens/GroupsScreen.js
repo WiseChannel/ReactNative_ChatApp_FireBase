@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, useLayoutEffect } from 'react'
+import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import ButtonWithBackground from "../components/ButtonWithBackground";
 import Images from '../const/Images'
 import GroupItem from "../components/GroupsItems";
@@ -7,18 +7,18 @@ import firebase, {firestore} from "firebase";
 
 function GroupsScreen({navigation})  {
 
-    const [groups, setGroups] = useState('')
+    const [groups, setGroups] = useState([])
 
      useLayoutEffect(() => {
-        navigation.setOption({
-            headerRight: () => {
+        navigation.setOptions({
+            headerRight: () => (
                 <ButtonWithBackground
                     onPress={() => {
                         navigation.navigate('Add Group Screen')
                     }}
                     image={Images.add}
                 />
-            },
+            ),
             headerLeft: () => (
                 <ButtonWithBackground
                     onPress={() => {
@@ -33,17 +33,13 @@ function GroupsScreen({navigation})  {
     const signOutUser = async () => {
         try{
             await firebase.auth().signOut()
-            navigation.reset({
-                index: 0,
-                routes: [{name: 'SplashScreen'}]
-            })
         }catch (e) {
             console.error('Err', e)
         }
     }
 
     function getCharts() {
-        const db = firestore()
+        const db = firestore
         let groupArray = []
 
         db.collection('groups')

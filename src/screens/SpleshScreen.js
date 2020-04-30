@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import React, {useEffect} from 'react'
+import { View, StyleSheet, Image } from 'react-native'
 import Color from '../utils/Colors'
 import Images from '../const/Images'
 import Constants from "../const/Constants";

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, FlatList, KeyboardAvoidingView, Alert, Button } from "react-native";
+import { StyleSheet, View, TouchableOpacity, FlatList, KeyboardAvoidingView, Alert } from "react-native";
 import firebase, {firestore} from "firebase";
 import MessageFieldView from "../components/MessageFieldView";
-import Colors from '../utils/Colors'
-import Constants from "../const/Constants";
 import String from "../const/String";
 import DismissKeyboard from "../components/DismissKeyboard";
 import MessageItem from "../components/MessageItem";
 
-const ChatScreen = ({ route, navigation }) => {
+const ChatScreen = ({ route }) => {
     const [messageList, setMessageList] = useState([])
     const [message, setMessage] = useState('')
     const [isJoined, setIsJoined] = useState(false)
@@ -67,21 +65,21 @@ const ChatScreen = ({ route, navigation }) => {
     }
 
     function joinGroup() {
-        const groupMemberRef = firestore().collection('members').doc(item.groupID).collection('member').doc()
+        const groupMemberRef = firestore.collection('members').doc(item.groupID).collection('member').doc()
         groupMemberRef.set({
             userID: userID
         }).then((docRef) => {
             setIsJoined(true)
-            Alert.alert(Strings.joinMessage)
+            Alert.alert(String.joinMessage)
             setMessage('')
         }).catch((e) => {
             setIsJoined(false)
-            Alert.alert(Strings.JoinGroupError)
+            Alert.alert(String.JoinGroupError)
         })
     }
 
     function getMessages() {
-        const db = firestore()
+        const db = firestore
         let messages = []
 
         db.collection('message').doc(item.groupID).collection('message')
@@ -104,7 +102,7 @@ const ChatScreen = ({ route, navigation }) => {
     }
 
     function sendMessagesToChat() {
-        const MessageRef = firestore()
+        const messageRef = firestore()
             .collection('message')
             .doc(item.groupID)
             .collection('messages')
@@ -151,10 +149,8 @@ const ChatScreen = ({ route, navigation }) => {
                     </FlatList>
                     <View style={styles.messageFieldView}>
                         <MessageFieldView
-                            //term={message}
                             placeholder={String.typeYourMessage}
                             onTermChange={message => setMessage(message)}
-                            //onSubmit={sendMessagesToChat}
                             onSubmit={sendMessagesToChat()}
                         >
 

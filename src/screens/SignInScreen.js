@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { StyleSheet, View, Text, Alert, SafeAreaView, KeyboardAvoidingView,  } from "react-native";
+import React, {useState} from 'react'
+import { StyleSheet, View, Alert, SafeAreaView, KeyboardAvoidingView,  } from "react-native";
 import Button from "../components/Button";
 import String from "../const/String";
 import EmailTextField from "../components/EmailTextField";

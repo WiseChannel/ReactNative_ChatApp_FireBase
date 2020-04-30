@@ -15,7 +15,11 @@ function ChatFlow() {
     return (
         <NavigationContainer>
             <Stack.Navigator name = 'Chat'>
-                <Stack.Navigator />
+                <Stack.Screen
+                    name='Splash Screen'
+                    component = {SplashScreen}
+                    options = {{headerShow: false}}
+                />
                 <Stack.Screen
                     name='Sign in screen'
                     component = {SignInScreen}

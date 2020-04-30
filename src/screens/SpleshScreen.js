@@ -12,19 +12,20 @@ function SplashScreen({ navigation }) {
     },[navigation])
 
     function NavigationToAuthORGroupScreens() {
-        const { currentUser } = firebase.auth()
         setTimeout(() => {
-            if (currentUser != null) {
-                navigation.reset({
-                    index: 0,
-                    routes: [{name: 'Groups Screen'}]
-                })
-            } else {
-                navigation.reset({
-                    index: 0,
-                    routes: [{name: 'SignInScreen'}]
-                })
-            }
+            firebase.auth().onAuthStateChanged(user => {
+                if (user != null) {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{name: 'Groups Screen'}]
+                    })
+                } else {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{name: 'SignInScreen'}]
+                    })
+                }
+            })
         }, 1000)
     }
 

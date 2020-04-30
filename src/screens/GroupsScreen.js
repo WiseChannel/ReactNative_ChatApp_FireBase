@@ -19,14 +19,28 @@ function GroupsScreen({navigation})  {
                     image={Images.add}
                 />
             },
-            headerLeft: () => {
+            headerLeft: () => (
                 <ButtonWithBackground
-                    onPress={() => {}}
+                    onPress={() => {
+                        signOutUser()
+                    }}
                     image={Images.logout}
                 />
-            }
+            )
         })
     });
+
+    const signOutUser = async () => {
+        try{
+            await firebase.auth().signOut()
+            navigation.reset({
+                index: 0,
+                routes: [{name: 'SplashScreen'}]
+            })
+        }catch (e) {
+            console.error('Err', e)
+        }
+    }
 
     function getCharts() {
         const db = firestore()

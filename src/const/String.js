@@ -8,6 +8,10 @@ const String = {
     GroupNameEmpty: 'Group name empty',
     CreateGroup: 'Create group',
     Send: 'Send',
+    JoinChat: 'Join Chat',
+    JoinChatConfirmMessage: 'Join Chat Confirm Message',
+    joinMessage: 'You join this chat',
+    JoinGroupError: 'You join this group chat'
 }
 
 export default String

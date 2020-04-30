@@ -18,8 +18,67 @@ const ChatScreen = ({ route, navigation }) => {
 
     useEffect(() => {
         console.log(item)
+        getUserJoinedAlreadyOrNot()
         getMessages()
     }, [])
+
+    function getUserJoinedAlreadyOrNot() {
+        firestore()
+            .collection('members')
+            .doc(item.groupID)
+            .collection('member')
+            .where('userID','==', userID)
+            .get().then((querySnaphot) => {
+                if(querySnaphot.size > 0) {
+                    querySnaphot.forEach((doc) => {
+                        if(doc.data() != null ) {
+                            setIsJoined(true)
+                        } else {
+                            setIsJoined(false)
+                            showAlertToJoinGroup()
+                        }
+                    })
+                } else {
+                    showAlertToJoinGroup()
+                }
+        }).catch((error) => {
+            console.log('Error getting documents: ', error)
+        })
+    }
+
+    function showAlertToJoinGroup() {
+        Alert.alert(
+            String.JoinChat,
+            String.JoinChatConfirmMessage,
+            [{
+                text: 'Yes',
+                onPress: () => {
+                    joinGroup()
+                }
+            }, {
+                text: 'No',
+                onPress: () => {
+
+                }
+            }
+            ],
+            {cancelable: false}
+        )
+    }
+
+    function joinGroup() {
+        const groupMemberRef = firestore().collection('members').doc(item.groupID).collection('member').doc()
+        groupMemberRef.set({
+            userID: userID
+        }).then((docRef) => {
+            setIsJoined(true)
+            Alert.alert(Strings.joinMessage)
+            setMessage('')
+        }).catch((e) => {
+            setIsJoined(false)
+            Alert.alert(Strings.JoinGroupError)
+        })
+    }
 
     function getMessages() {
         const db = firestore()

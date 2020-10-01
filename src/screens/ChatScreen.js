@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, TouchableOpacity, FlatList, KeyboardAvoidingView, Alert } from "react-native";
-import firebase, {firestore} from "../firebase/Firebase";
+import firebase, { firestore } from "../firebase/Firebase";
 import MessageFieldView from "../components/MessageFieldView";
 import String from "../const/String";
 import DismissKeyboard from "../components/DismissKeyboard";
 import MessageItem from "../components/MessageItem";
 
 const ChatScreen = ({ route }) => {
+
     const [messageList, setMessageList] = useState([])
     const [message, setMessage] = useState('')
     const [isJoined, setIsJoined] = useState(false)
 
-    const {item} = route.params
+    const { item } = route.params
     const userID = firebase.auth().currentUser.uid
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const ChatScreen = ({ route }) => {
     }, [])
 
     function getUserJoinedAlreadyOrNot() {
-        firestore()
+        firestore
             .collection('members')
             .doc(item.groupID)
             .collection('member')
@@ -83,7 +84,7 @@ const ChatScreen = ({ route }) => {
         let messages = []
 
         db.collection('message').doc(item.groupID).collection('message')
-            .onSnapshot(function (snapshot) {
+            .onSnapshot( snapshot => {
                 snapshot.docChanges().forEach(function (change) {
                     if(change.type === 'added') {
                         console.log('New Message', change.doc.data())
@@ -115,9 +116,9 @@ const ChatScreen = ({ route }) => {
             senderId: userID,
             senderEmail: userEmail
         }).then(docRef => {
-            console.log('Document written with ID ', messageRef.id)
+            console.log('Document written with ID ', messageRef.id, docRef)
             setMessage('')
-        }).catch((e) => {
+        }).catch(e => {
             Alert.alert(e.message)
             console.log('Error', e)
         })

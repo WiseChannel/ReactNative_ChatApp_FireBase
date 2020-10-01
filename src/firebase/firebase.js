@@ -1,26 +1,17 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-require('firebase/auth')
-import {
-    API_KEY,
-    AUTH_DOMAIN,
-    DATABASE_URL,
-    PROJECT_ID,
-    STORAGE_BUCKET,
-    MESSAGING_SENDER_ID,
-    APP_ID
-} from 'react-native-dotenv'
+import 'firebase/auth'
 
-let firebaseConfig = {
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    databaseURL: DATABASE_URL,
-    projectId: PROJECT_ID,
-    storageBucket: STORAGE_BUCKET,
-    messagingSenderId: MESSAGING_SENDER_ID,
-    appId: APP_ID,
-    measurementId: MESSAGING_SENDER_ID
-  };
+const firebaseConfig = {
+    apiKey: "AIzaSyAboZTZx_7qrREPeRU5u9lgHHizAIFxYmc",
+    authDomain: "reactnativechat-52fc4.firebaseapp.com",
+    databaseURL: "https://reactnativechat-52fc4.firebaseio.com",
+    projectId: "reactnativechat-52fc4",
+    storageBucket: "reactnativechat-52fc4.appspot.com",
+    messagingSenderId: "48135712910",
+    appId: "1:48135712910:web:4ce730047627852ede99df",
+    measurementId: "G-F83VMREG7F"
+};
 
 firebase.initializeApp(firebaseConfig)
 

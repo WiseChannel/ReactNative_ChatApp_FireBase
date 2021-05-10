@@ -6,7 +6,7 @@ import String from "../const/String";
 import Utility from "../utils/Utility";
 import firebase, {firestore} from "firebase";
 
-function AddGroupScreen({ navigation}) {
+function AddGroupScreen({ navigation }) {
 
     const [groupName, setGroupName] = useState('')
     const [fieldError, setFieldError] = useState('')
@@ -55,7 +55,7 @@ function AddGroupScreen({ navigation}) {
         })
     }
 
-    performCreateGroup = () => {
+    const performCreateGroup = () => {
         const isValidateField = validateField()
         if(isValidateField) {
             createGroupFireBase()
